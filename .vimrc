@@ -1,6 +1,15 @@
 " Don't try to be vi compatible
 set nocompatible
 
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  
+  " Install all the plugins
+  autocmd VimEnter * PlugInstall
+endif
+
 " Helps force plugins to load correctly when it is turned back on below
 filetype off
 " TODO: Load plugins here (pathogen or vundle)
@@ -95,3 +104,4 @@ let g:solarized_termtrans=1
 " put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
 " in ~/.vim/colors/ and uncomment:
 colorscheme default
+
